@@ -1,9 +1,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <string.h>
 #include <time.h>
-//#include <stdbool.h>
 
 const long long int DEFAULT_ARRAY_SIZE = 1000000;
 const int DEFAULT_RUNS = 100;
