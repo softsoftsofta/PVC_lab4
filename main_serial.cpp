@@ -1,6 +1,3 @@
-//#include <limits.h>
-//#include <stdint.h>
-//#include <asm-generic/errno.h>
 #include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
