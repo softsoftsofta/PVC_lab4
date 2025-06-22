@@ -1,13 +1,8 @@
-//#include <limits.h>
-//#include <stdint.h>
-//#include <asm-generic/errno.h>
 #include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <string.h>
 #include <time.h>
 #include <cuda_runtime.h>
-//#include <stdbool.h>
 
 const long long int DEFAULT_ARRAY_SIZE = 100000000;
 const int DEFAULT_RUNS = 2;
@@ -16,7 +11,6 @@ const int DEFAULT_BLOCKS = 8;
 
 // Код взят из
 // https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
-// Очень интересная и полезная презентация
 template <unsigned int blockSize>
 __device__ void warpReduce(volatile int *sdata, int tid) {
     if (blockSize >= 64) sdata[tid] += sdata[tid + 32];
@@ -79,20 +73,6 @@ int GetEnvThreads() {
     }
     return thread_int;
 }
-
-// int GetEnvBlocks() {
-//     char* block_char = getenv("BLOCKS");
-//     int block_int = DEFAULT_BLOCKS;
-//     if (block_char != NULL) {
-//         block_int = atoi(block_char);
-//     } else {
-//         printf(
-//             "Переменная среды BLOCKS не получена, "
-//             "используем значение по умолчанию: %d \n", DEFAULT_BLOCKS
-//         );
-//     }
-//     return block_int;
-// }
 
 int GetEnvRuns() {
     char* runs_char = getenv("RUNS");
